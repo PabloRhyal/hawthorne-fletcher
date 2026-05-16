@@ -722,6 +722,178 @@
   }
 
 
+  /* ── SUBSTACK ── */
+  #substack {
+    border-bottom: 1px solid var(--light-rule);
+    background: rgba(255,255,255,0.015);
+  }
+  .substack-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--light-rule);
+    align-items: end;
+  }
+  .substack-intro {
+    font-size: 1.05rem;
+    color: rgba(245,243,239,0.55);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 420px;
+  }
+  .substack-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--light-rule);
+    margin-bottom: 3rem;
+    overflow: hidden;
+  }
+  .substack-banner-left {
+    padding: 3.5rem;
+    border-right: 1px solid var(--light-rule);
+  }
+  .substack-banner-left h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .substack-banner-left p {
+    font-size: 1rem;
+    color: rgba(245,243,239,0.55);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2.2rem;
+  }
+  .substack-sub-meta {
+    display: flex; align-items: center; gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .substack-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--light-rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--mid);
+  }
+  .substack-meta-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .substack-meta-text strong {
+    color: var(--white);
+    display: block;
+  }
+  .substack-cta-row {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+  }
+  .substack-banner-right {
+    padding: 3.5rem;
+    background: rgba(255,255,255,0.02);
+    display: flex; flex-direction: column; justify-content: center; gap: 1.8rem;
+  }
+  .substack-stat {
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--light-rule);
+  }
+  .substack-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .substack-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+  }
+  .substack-stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 0.3rem;
+  }
+
+  /* Substack RSS posts */
+  .substack-posts-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .substack-posts-label::after {
+    content: ''; flex: 1;
+    border-top: 1px solid var(--light-rule);
+  }
+  .substack-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .substack-post-card {
+    border: 1px solid var(--light-rule);
+    padding: 2rem 1.8rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 220px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .substack-post-card:hover { background: rgba(255,255,255,0.03); }
+  .substack-post-card:hover .post-arrow { transform: translateX(4px); color: var(--white); }
+  .substack-post-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .substack-post-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+    flex: 1;
+  }
+  .substack-post-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--light-rule);
+    margin-top: 1.5rem;
+  }
+  .substack-loading {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--mid);
+    text-align: center;
+    padding: 3rem;
+    border: 1px solid var(--light-rule);
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 900px) {
+    .substack-header { grid-template-columns: 1fr; gap: 2rem; }
+    .substack-banner { grid-template-columns: 1fr; }
+    .substack-banner-left { border-right: none; border-bottom: 1px solid var(--light-rule); }
+    .substack-posts-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── ARTICLE VIEW ── */
   #article-view {
     padding: 8rem 4rem 6rem;
@@ -820,7 +992,8 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#research">Research</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#substack">Newsletter</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -991,7 +1164,59 @@
   </article>
 </div>
 
-<!-- ABOUT -->
+<!-- SUBSTACK -->
+<section id="substack">
+  <div class="substack-header">
+    <div>
+      <p class="section-label">Newsletter</p>
+      <h2 class="section-title">Published on<br><em>Substack</em></h2>
+    </div>
+    <p class="substack-intro">
+      Free and paid analysis delivered directly to your inbox. No paywalls on ideas — only on depth. Join readers who want research they can trust.
+    </p>
+  </div>
+
+  <!-- Banner -->
+  <div class="substack-banner">
+    <div class="substack-banner-left">
+      <h3>Independent research.<br><em>Straight to your inbox.</em></h3>
+      <p>Every issue covers one idea in depth — a company, a sector, or a market dynamic that deserves more attention than it's getting. Written to be read, not skimmed.</p>
+      <div class="substack-sub-meta">
+        <div class="substack-avatar">H</div>
+        <div class="substack-meta-text">
+          <strong>Hawthorne & Fletcher</strong>
+          hawthorneandfletcher.substack.com
+        </div>
+      </div>
+      <div class="substack-cta-row">
+        <a href="https://hawthorneandfletcher.substack.com" target="_blank" rel="noopener" class="btn-primary">Subscribe on Substack</a>
+        <a href="https://hawthorneandfletcher.substack.com/archive" target="_blank" rel="noopener" class="btn-ghost">View Archive →</a>
+      </div>
+    </div>
+    <div class="substack-banner-right">
+      <div class="substack-stat">
+        <div class="substack-stat-num">Free</div>
+        <div class="substack-stat-lbl">Core analysis, always free</div>
+      </div>
+      <div class="substack-stat">
+        <div class="substack-stat-num">Weekly</div>
+        <div class="substack-stat-lbl">New issues every week</div>
+      </div>
+      <div class="substack-stat">
+        <div class="substack-stat-num">0</div>
+        <div class="substack-stat-lbl">Conflicts of interest</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent posts from RSS -->
+  <div class="substack-posts-label">Recent issues</div>
+  <div class="substack-posts-grid" id="substack-posts">
+    <div class="substack-loading">Loading latest issues…</div>
+  </div>
+</section>
+
+<!-- ABOUT (brief, links to about.html) -->
 <section id="about">
   <div class="about-visual">
     <div class="about-box about-box-2"></div>
@@ -1018,9 +1243,11 @@
     <p>Hawthorne & Fletcher was founded on a single conviction: that quality equity research should serve investors, not underwriters. Our work is funded entirely by our clients — not by the companies we cover.</p>
     <p>We combine rigorous financial modelling with qualitative judgement built over years of following markets. Our reports are written to be read, understood, and acted upon — not filed away.</p>
     <p>Based in the United Kingdom, we work with clients across Europe and internationally who value research that tells them what they need to hear, not what they want to hear.</p>
+    <div style="margin-top: 2.5rem;">
+      <a href="about.html" class="btn-primary">Meet the team →</a>
+    </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-info">
@@ -1084,7 +1311,8 @@
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#research">Research</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#substack">Newsletter</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <span class="footer-copy">© 2025 Hawthorne & Fletcher. All rights reserved.</span>
@@ -1219,7 +1447,56 @@
   // Init
   loadPosts();
 
-  // ── OTHER ──
+  // ── SUBSTACK RSS ──
+  async function loadSubstackPosts() {
+    const container = document.getElementById('substack-posts');
+    const SUBSTACK_URL = 'https://hawthorneandfletcher.substack.com';
+    const RSS_URL = `${SUBSTACK_URL}/feed`;
+    const PROXY = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=6`;
+
+    try {
+      const res = await fetch(PROXY);
+      const data = await res.json();
+
+      if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+        throw new Error('No posts found');
+      }
+
+      container.innerHTML = data.items.map(item => {
+        const date = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        const title = item.title || 'Untitled';
+        const link = item.link || SUBSTACK_URL;
+        // Strip HTML from description
+        const tmp = document.createElement('div');
+        tmp.innerHTML = item.description || '';
+        const excerpt = (tmp.textContent || '').trim().slice(0, 110) + '…';
+
+        return `
+          <a class="substack-post-card" href="${link}" target="_blank" rel="noopener">
+            <div>
+              <span class="substack-post-date">${date}</span>
+              <div class="substack-post-title">${title}</div>
+              <div class="post-card-excerpt" style="font-size:0.88rem">${excerpt}</div>
+            </div>
+            <div class="substack-post-footer">
+              <span class="post-card-date">Substack</span>
+              <span class="post-arrow">→</span>
+            </div>
+          </a>`;
+      }).join('');
+
+    } catch (err) {
+      // Graceful fallback — show CTA only
+      container.innerHTML = `
+        <div class="substack-loading" style="grid-column:1/-1">
+          Could not load recent issues. <a href="https://hawthorneandfletcher.substack.com/archive" target="_blank" rel="noopener" style="color:var(--white);border-bottom:1px solid var(--light-rule)">Browse the full archive →</a>
+        </div>`;
+    }
+  }
+
+  loadSubstackPosts();
+
+
   function handleSubmit(btn) {
     btn.textContent = 'Message Sent ✓';
     btn.style.background = 'transparent';

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Hawthorne & Fletcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ef;
+    --off-white: #e8e4dd;
+    --mid: #888;
+    --light-rule: rgba(255,255,255,0.08);
+    --dark-rule: rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 4rem;
+    border-bottom: 1px solid var(--light-rule);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--mid); }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 12rem 4rem 6rem;
+    border-bottom: 1px solid var(--light-rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: end;
+    overflow: hidden;
+    position: relative;
+  }
+  .page-header-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--light-rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--light-rule) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .page-header-left { position: relative; z-index: 1; }
+  .page-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.2s forwards;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .page-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--off-white);
+  }
+  .page-header-right {
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .page-header-right p {
+    font-size: 1.1rem;
+    color: rgba(245,243,239,0.6);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 460px;
+  }
+
+  /* ── FOUNDER SECTION ── */
+  .founder-section {
+    padding: 7rem 4rem;
+    border-bottom: 1px solid var(--light-rule);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8rem;
+    align-items: start;
+  }
+  .founder-card {
+    position: sticky; top: 8rem;
+  }
+  .founder-avatar {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--light-rule);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .founder-avatar-inner {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .founder-avatar-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(245,243,239,0.15);
+    line-height: 1;
+  }
+  .founder-avatar-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(136,136,136,0.4);
+  }
+  /* Decorative lines on the avatar */
+  .founder-avatar::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(255,255,255,0.03), transparent);
+  }
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 0.4rem;
+  }
+  .founder-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.8rem;
+  }
+  .founder-links {
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .founder-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    border: 1px solid var(--light-rule);
+    padding: 0.6rem 1rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.2s;
+  }
+  .founder-link:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+
+  /* Founder bio */
+  .founder-bio {}
+  .bio-section {
+    padding-bottom: 3.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--light-rule);
+  }
+  .bio-section:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .bio-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+  }
+  .bio-text {
+    font-size: 1.1rem;
+    color: rgba(245,243,239,0.72);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+  .bio-text p { margin-bottom: 1.4rem; }
+  .bio-text p:last-child { margin-bottom: 0; }
+  .bio-text strong { color: var(--white); font-weight: 400; }
+
+  /* Philosophy items */
+  .philosophy-list {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .philosophy-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--light-rule);
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .philosophy-item:last-child { border-bottom: none; }
+  .philosophy-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--mid);
+    padding-top: 0.3rem;
+  }
+  .philosophy-body {}
+  .philosophy-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .philosophy-desc {
+    font-size: 0.95rem;
+    color: rgba(245,243,239,0.55);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── VALUES STRIP ── */
+  .values-strip {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid var(--light-rule);
+    background: rgba(255,255,255,0.015);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .value-item {
+    padding: 2.5rem;
+    border-right: 1px solid var(--light-rule);
+  }
+  .value-item:last-child { border-right: none; }
+  .value-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--mid);
+    margin-bottom: 2rem;
+  }
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .value-desc {
+    font-size: 0.88rem;
+    color: rgba(245,243,239,0.5);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+  .cta-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+  .cta-strip h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--off-white);
+  }
+  .cta-strip-btns {
+    display: flex; gap: 1rem; flex-shrink: 0; flex-wrap: wrap;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    border: 1px solid var(--white);
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: transparent; color: var(--white); }
+
+  .btn-ghost {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    background: transparent;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    border: 1px solid var(--light-rule);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--mid); color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--light-rule);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(136,136,136,0.5);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(136,136,136,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--mid); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.6rem; }
+    .nav-links { display: none; }
+    .page-header { grid-template-columns: 1fr; padding: 9rem 1.6rem 4rem; gap: 2rem; }
+    .founder-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.6rem; }
+    .founder-card { position: static; }
+    .founder-avatar { aspect-ratio: 1/1; max-width: 280px; }
+    .values-strip { grid-template-columns: 1fr 1fr; }
+    .value-item:nth-child(2) { border-right: none; }
+    .value-item:nth-child(3) { border-top: 1px solid var(--light-rule); }
+    .value-item:nth-child(4) { border-top: 1px solid var(--light-rule); border-right: none; }
+    .cta-strip { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.6rem; }
+    footer { padding: 2rem 1.6rem; flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Hawthorne <span>&</span> Fletcher</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="index.html#substack">Newsletter</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-left">
+    <p class="page-eyebrow">Hawthorne & Fletcher — About Us</p>
+    <h1 class="page-title">
+      The mind<br>
+      behind the<br>
+      <em>analysis.</em>
+    </h1>
+  </div>
+  <div class="page-header-right">
+    <p>Hawthorne & Fletcher is built on one belief: that investors deserve research written for them — not for the sell-side, not for the underwriter. Every piece of analysis we publish carries that conviction.</p>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<section class="founder-section">
+  <!-- Left: card -->
+  <div class="founder-card">
+    <div class="founder-avatar">
+      <div class="founder-avatar-inner">
+        <div class="founder-avatar-initials">HF</div>
+        <div class="founder-avatar-lbl">Founder · Analyst</div>
+      </div>
+    </div>
+    <div class="founder-name">[Your Name]</div>
+    <div class="founder-role">Founder & Lead Analyst</div>
+    <div class="founder-links">
+      <a class="founder-link" href="https://hawthorneandfletcher.substack.com" target="_blank" rel="noopener">
+        <span>Substack</span><span>↗</span>
+      </a>
+      <a class="founder-link" href="mailto:hello@hawthorneandfletcher.com">
+        <span>Email</span><span>→</span>
+      </a>
+      <a class="founder-link" href="https://hawthorneandfletcher.com">
+        <span>hawthorneandfletcher.com</span><span>↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: bio -->
+  <div class="founder-bio">
+
+    <div class="bio-section">
+      <div class="bio-label">Background</div>
+      <div class="bio-text">
+        <p>[Your name] founded Hawthorne & Fletcher with the conviction that <strong>independent equity research had become an endangered species</strong>. Having spent years watching the sell-side bend analysis to serve deal flow rather than investors, the goal was simple: build something different.</p>
+        <p>With a background spanning fundamental equity analysis, financial modelling, and sector coverage across European and global markets, the focus at H&F is on <strong>work that endures beyond the next earnings call</strong> — research that asks whether a business is genuinely good, at what price, and why.</p>
+        <p>Replace this text with your own background and story. Describe your career, your approach, and what led you to start Hawthorne & Fletcher. Investors want to know who is writing the research they read.</p>
+      </div>
+    </div>
+
+    <div class="bio-section">
+      <div class="bio-label">Approach to research</div>
+      <div class="bio-text">
+        <p>Every report published under the Hawthorne & Fletcher name starts from the same place: <strong>what does this business actually do, and how does it earn money?</strong> The analysis builds from first principles rather than consensus models.</p>
+        <p>Sectors covered include [your sectors — e.g. European industrials, technology, financials]. The preference is for businesses with durable competitive advantages, intelligible economics, and management teams with skin in the game — but the analysis follows the opportunity, not a fixed mandate.</p>
+      </div>
+    </div>
+
+    <div class="bio-section">
+      <div class="bio-label">Investment philosophy</div>
+      <div class="philosophy-list">
+        <div class="philosophy-item">
+          <div class="philosophy-num">01</div>
+          <div class="philosophy-body">
+            <div class="philosophy-title">Independence above all</div>
+            <div class="philosophy-desc">Research funded by clients, not by companies we cover. No banking relationships. No rating inflation. The conclusions go where the evidence leads.</div>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-num">02</div>
+          <div class="philosophy-body">
+            <div class="philosophy-title">First principles over consensus</div>
+            <div class="philosophy-desc">Consensus models are a starting point, not a destination. The interesting questions are always about what the market is getting wrong — and why.</div>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-num">03</div>
+          <div class="philosophy-body">
+            <div class="philosophy-title">Patience as a strategy</div>
+            <div class="philosophy-desc">The best ideas require time to play out. Research is written with a multi-year horizon — not to fit a quarterly publication schedule.</div>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-num">04</div>
+          <div class="philosophy-body">
+            <div class="philosophy-title">Transparency of reasoning</div>
+            <div class="philosophy-desc">Every recommendation makes the reasoning explicit. Readers should be able to disagree with a specific assumption — not just accept or reject a conclusion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALUES STRIP -->
+<div class="values-strip">
+  <div class="value-item">
+    <div class="value-num">01</div>
+    <div class="value-title">Conflict-free</div>
+    <div class="value-desc">No underwriting. No advisory fees from covered companies. Research funded entirely by readers and clients.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-num">02</div>
+    <div class="value-title">Fundamental</div>
+    <div class="value-desc">Bottom-up analysis from the company level up. Not macro-driven. Not momentum-driven.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-num">03</div>
+    <div class="value-title">Long-horizon</div>
+    <div class="value-desc">Written for investors who think in years. No target prices anchored to the next quarter.</div>
+  </div>
+  <div class="value-item">
+    <div class="value-num">04</div>
+    <div class="value-title">Transparent</div>
+    <div class="value-desc">Assumptions, models, and reasoning are all visible. Agree or disagree — but always know why.</div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Ready to read research<br>with <em>no agenda?</em></h2>
+  <div class="cta-strip-btns">
+    <a href="https://hawthorneandfletcher.substack.com" target="_blank" rel="noopener" class="btn-primary">Subscribe on Substack</a>
+    <a href="index.html#contact" class="btn-ghost">Get in touch</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Hawthorne &amp; Fletcher</span>
+  <ul class="footer-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="index.html#substack">Newsletter</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Hawthorne & Fletcher. All rights reserved.</span>
+</footer>
+
+<script>
+  // Scroll-in animation for bio sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.founder-card, .bio-section, .value-item, .cta-strip h2').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
