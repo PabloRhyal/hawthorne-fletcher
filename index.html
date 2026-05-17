@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
 <title>Hawthorne & Fletcher — Equity Research & Independent Analysis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -986,6 +986,18 @@
 </style>
 </head>
 <body>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 
 <!-- NAV -->
 <nav>
@@ -1315,6 +1327,7 @@
     <li><a href="#substack">Newsletter</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="disclaimer.html">Disclaimer</a></li>
   </ul>
   <span class="footer-copy">© 2025 Hawthorne & Fletcher. All rights reserved.</span>
 </footer>
