@@ -4,22 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>H&F Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <script>
-    // Point to Netlify Identity service
-    window.netlifyIdentity && window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-    // Force the identity widget to use the Netlify site URL
-    window.netlifyIdentity = window.netlifyIdentity || {};
-    window.netlifyIdentity.siteUrl = "https://ephemeral-pika-e281c0.netlify.app";
+    // Must be set BEFORE loading the identity widget
+    window.netlifyIdentity = { siteUrl: "https://ephemeral-pika-e281c0.netlify.app" };
   </script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
