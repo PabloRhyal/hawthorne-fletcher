@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found · Hawthorne & Fletcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0a0a0a; --white: #f5f3ef; --mid: #888;
+    --light-rule: rgba(255,255,255,0.08);
+  }
+  body {
+    background: var(--black); color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px; line-height: 1.7;
+    min-height: 100vh; display: flex; flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* Noise */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 9999;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 4rem;
+    border-bottom: 1px solid var(--light-rule);
+    background: rgba(10,10,10,0.9); backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif; font-size: 1rem;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--mid); }
+  .nav-back {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--white); }
+
+  main {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 10rem 2rem 6rem; text-align: center; position: relative;
+  }
+
+  /* Big 404 background number */
+  .bg-num {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14rem, 30vw, 28rem);
+    font-weight: 900; line-height: 1;
+    color: rgba(255,255,255,0.025);
+    user-select: none; pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  .content { position: relative; z-index: 1; max-width: 560px; }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; line-height: 1.0;
+    margin-bottom: 1.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  h1 em { font-style: italic; font-weight: 400; }
+  p {
+    font-size: 1.05rem; color: rgba(245,243,239,0.55);
+    font-weight: 300; line-height: 1.8; margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.8s 0.55s forwards;
+  }
+  .cta-row {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+  }
+  .btn-primary {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--black); background: var(--white);
+    padding: 0.9rem 2rem; text-decoration: none;
+    border: 1px solid var(--white); transition: background 0.2s, color 0.2s;
+  }
+  .btn-primary:hover { background: transparent; color: var(--white); }
+  .btn-ghost {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mid); background: transparent;
+    padding: 0.9rem 2rem; text-decoration: none;
+    border: 1px solid var(--light-rule); transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--mid); color: var(--white); }
+
+  /* Decorative chart line */
+  .deco-chart {
+    margin: 0 auto 4rem; width: 260px; height: 60px;
+    opacity: 0; animation: fadeIn 1.2s 0.9s forwards;
+  }
+
+  /* Ticker */
+  .mini-ticker {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    border-top: 1px solid var(--light-rule);
+    padding: 0.7rem 0; overflow: hidden;
+    background: rgba(10,10,10,0.9);
+  }
+  .mini-track {
+    display: flex; gap: 4rem; animation: ticker 22s linear infinite;
+    white-space: nowrap; width: max-content;
+  }
+  .t-item {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.1em; color: var(--mid);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .t-sym { color: var(--white); }
+  .t-up { color: #7fb97f; } .t-dn { color: #b97f7f; }
+
+  footer {
+    border-top: 1px solid var(--light-rule);
+    padding: 2rem 4rem; text-align: center; margin-bottom: 2.8rem;
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.12em; color: rgba(136,136,136,0.4);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.6rem; }
+    footer { padding: 1.5rem 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Hawthorne <span>&</span> Fletcher</a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<main>
+  <div class="bg-num">404</div>
+
+  <div class="content">
+    <p class="eyebrow">Error 404</p>
+    <h1>Page not<br><em>found.</em></h1>
+
+    <svg class="deco-chart" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 50 L 30 42 L 55 46 L 80 35 L 105 30 L 130 22 L 155 28 L 175 14 L 200 8 L 230 4 L 260 10"
+            stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+            stroke-dasharray="4 3"/>
+    </svg>
+
+    <p>The page you're looking for has either moved, been removed, or doesn't exist. Perhaps the market corrected it.</p>
+
+    <div class="cta-row">
+      <a href="/" class="btn-primary">Back to Home</a>
+      <a href="/#research" class="btn-ghost">Read Research →</a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2025 Hawthorne & Fletcher. All rights reserved.</footer>
+
+<div class="mini-ticker">
+  <div class="mini-track">
+    <span class="t-item"><span class="t-sym">AAPL</span><span class="t-up">▲ 1.24%</span></span>
+    <span class="t-item"><span class="t-sym">MSFT</span><span class="t-up">▲ 0.87%</span></span>
+    <span class="t-item"><span class="t-sym">GOOGL</span><span class="t-dn">▼ 0.33%</span></span>
+    <span class="t-item"><span class="t-sym">AMZN</span><span class="t-up">▲ 2.11%</span></span>
+    <span class="t-item"><span class="t-sym">NVDA</span><span class="t-up">▲ 3.54%</span></span>
+    <span class="t-item"><span class="t-sym">META</span><span class="t-dn">▼ 0.19%</span></span>
+    <span class="t-item"><span class="t-sym">TSLA</span><span class="t-up">▲ 1.90%</span></span>
+    <span class="t-item"><span class="t-sym">JPM</span><span class="t-dn">▼ 0.62%</span></span>
+    <span class="t-item"><span class="t-sym">BRK.B</span><span class="t-up">▲ 0.44%</span></span>
+    <span class="t-item"><span class="t-sym">V</span><span class="t-up">▲ 0.58%</span></span>
+    <!-- duplicate for loop -->
+    <span class="t-item"><span class="t-sym">AAPL</span><span class="t-up">▲ 1.24%</span></span>
+    <span class="t-item"><span class="t-sym">MSFT</span><span class="t-up">▲ 0.87%</span></span>
+    <span class="t-item"><span class="t-sym">GOOGL</span><span class="t-dn">▼ 0.33%</span></span>
+    <span class="t-item"><span class="t-sym">AMZN</span><span class="t-up">▲ 2.11%</span></span>
+    <span class="t-item"><span class="t-sym">NVDA</span><span class="t-up">▲ 3.54%</span></span>
+    <span class="t-item"><span class="t-sym">META</span><span class="t-dn">▼ 0.19%</span></span>
+    <span class="t-item"><span class="t-sym">TSLA</span><span class="t-up">▲ 1.90%</span></span>
+    <span class="t-item"><span class="t-sym">JPM</span><span class="t-dn">▼ 0.62%</span></span>
+    <span class="t-item"><span class="t-sym">BRK.B</span><span class="t-up">▲ 0.44%</span></span>
+    <span class="t-item"><span class="t-sym">V</span><span class="t-up">▲ 0.58%</span></span>
+  </div>
+</div>
+
+</body>
+</html>
