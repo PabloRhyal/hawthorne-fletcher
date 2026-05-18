@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Independent equity research and analysis for investors who demand rigour. No conflicts. No house views. Just honest analysis.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawthorneandfletcher.com/">
+<meta property="og:title" content="Hawthorne & Fletcher — Independent Equity Research">
+<meta property="og:description" content="Rigorous, conflict-free equity research for individual investors, family offices, and institutional clients.">
+<meta property="og:image" content="https://hawthorneandfletcher.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hawthorne & Fletcher — Independent Equity Research">
+<meta name="twitter:description" content="Conflict-free equity research. No house views, no rating inflation.">
+<meta name="twitter:image" content="https://hawthorneandfletcher.com/og-image.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Hawthorne & Fletcher — Equity Research & Independent Analysis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1179,6 +1192,185 @@
     .newsletter-form .btn-submit { width: 100%; }
     #newsletter { padding: 5rem 1.6rem; }
   }
+
+  /* ── LIGHT MODE ── */
+  body.light { --black: #f5f3ef; --white: #0a0a0a; --mid: #555; --light-rule: rgba(0,0,0,0.1); }
+  body.light nav { background: rgba(245,243,239,0.95); }
+  body.light .mobile-menu { background: rgba(245,243,239,0.98); }
+  body.light .hero-photo { filter: grayscale(20%) brightness(1.1); }
+  .theme-toggle {
+    background: none; border: 1px solid var(--light-rule); color: var(--mid);
+    cursor: pointer; padding: 0.35rem 0.65rem; font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.08em; transition: all 0.2s; margin-left: 1.2rem;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { color: var(--white); border-color: var(--mid); }
+
+  /* ── SCROLL PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 200;
+    height: 2px; width: 0%; background: var(--white);
+    pointer-events: none; transition: width 0.08s linear;
+  }
+
+  /* ── BACK TO TOP ── */
+  #back-to-top {
+    position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 90;
+    width: 42px; height: 42px; background: rgba(10,10,10,0.92);
+    border: 1px solid var(--light-rule); color: var(--white);
+    cursor: pointer; backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; opacity: 0; transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    pointer-events: none;
+  }
+  #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+  #back-to-top:hover { background: rgba(245,243,239,0.1); }
+
+  /* ── RESEARCH SEARCH ── */
+  .research-search { position: relative; margin-bottom: 1.2rem; }
+  .research-search input {
+    width: 100%; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--light-rule); color: var(--white);
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.1em; padding: 0.75rem 1rem 0.75rem 2.5rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .research-search input:focus { border-color: rgba(255,255,255,0.22); }
+  .research-search input::placeholder { color: rgba(136,136,136,0.45); }
+  .search-icon {
+    position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
+    color: var(--mid); font-style: normal; font-size: 0.75rem; pointer-events: none;
+  }
+  .no-results {
+    grid-column: 1/-1; text-align: center; padding: 4rem 2rem;
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.15em; color: var(--mid); border: 1px solid var(--light-rule);
+  }
+
+  /* ── SKELETON LOADER ── */
+  .skeleton { background: rgba(255,255,255,0.06); position: relative; overflow: hidden; border-radius: 0; }
+  .skeleton::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 50%, transparent 100%);
+    animation: shimmer 1.8s infinite;
+  }
+  @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+  .skel-featured {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--light-rule); margin-bottom: 2px; min-height: 260px;
+  }
+  .skel-feat-left { padding: 3rem; border-right: 1px solid var(--light-rule); display: flex; flex-direction: column; gap: 1rem; }
+  .skel-feat-right { background: rgba(255,255,255,0.015); }
+  .skel-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .skel-card { border: 1px solid var(--light-rule); padding: 2.5rem 2rem; min-height: 190px; display: flex; flex-direction: column; gap: 0.8rem; }
+  .sk { display: block; }
+  .sk-tag { height: 10px; width: 55px; }
+  .sk-h { height: 15px; } .sk-h.w80 { width: 80%; } .sk-h.w60 { width: 60%; } .sk-h.w90 { width: 90%; }
+  .sk-p { height: 9px; } .sk-p.w100 { width: 100%; } .sk-p.w75 { width: 75%; } .sk-p.w50 { width: 50%; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { border-bottom: 1px solid var(--light-rule); background: rgba(255,255,255,0.01); }
+  .testimonials-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    margin-bottom: 4rem; padding-bottom: 3rem;
+    border-bottom: 1px solid var(--light-rule); align-items: end;
+  }
+  .testimonials-intro {
+    font-size: 1.05rem; color: rgba(245,243,239,0.55);
+    font-weight: 300; line-height: 1.75; max-width: 420px;
+  }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .testimonial-card {
+    border: 1px solid var(--light-rule); padding: 3rem 2.5rem;
+    transition: background 0.3s; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .testimonial-card:hover { background: rgba(255,255,255,0.025); }
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif; font-size: 1.12rem; font-style: italic;
+    font-weight: 400; line-height: 1.65; color: rgba(245,243,239,0.82);
+    margin-bottom: 2rem; flex: 1;
+  }
+  .testimonial-quote::before { content: '\201C'; }
+  .testimonial-quote::after  { content: '\201D'; }
+  .testimonial-footer { padding-top: 1.5rem; border-top: 1px solid var(--light-rule); }
+  .testimonial-role {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.3rem;
+  }
+  .testimonial-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; }
+
+  /* ── FAQ ── */
+  #faq { border-bottom: 1px solid var(--light-rule); }
+  .faq-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    margin-bottom: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid var(--light-rule); align-items: end;
+  }
+  .faq-intro { font-size: 1.05rem; color: rgba(245,243,239,0.55); font-weight: 300; line-height: 1.75; max-width: 420px; }
+  .faq-item { border-bottom: 1px solid var(--light-rule); }
+  .faq-question {
+    width: 100%; background: none; border: none; text-align: left;
+    padding: 1.8rem 0; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 600;
+    color: var(--white); transition: color 0.2s;
+  }
+  .faq-question:hover { color: rgba(245,243,239,0.7); }
+  .faq-icon {
+    font-family: 'DM Mono', monospace; font-size: 1.1rem; color: var(--mid);
+    transition: transform 0.3s, color 0.2s; flex-shrink: 0; line-height: 1;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--white); }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0,1,0,1); }
+  .faq-item.open .faq-answer { max-height: 400px; transition: max-height 0.5s cubic-bezier(0.5,0,0.5,1); }
+  .faq-answer-inner {
+    padding-bottom: 2rem; font-size: 1rem;
+    color: rgba(245,243,239,0.58); font-weight: 300; line-height: 1.8;
+  }
+
+  /* ── COPY EMAIL ── */
+  .copy-btn {
+    background: none; border: 1px solid var(--light-rule); cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em;
+    color: var(--mid); padding: 0.2rem 0.5rem; margin-left: 0.6rem;
+    transition: all 0.2s; vertical-align: middle;
+  }
+  .copy-btn:hover { color: var(--white); border-color: var(--mid); }
+  .copy-btn.copied { color: #7fb97f; border-color: #7fb97f; }
+
+  /* ── ANCHOR OFFSET (nav height fix) ── */
+  [id] { scroll-margin-top: 88px; }
+
+  /* ── FOCUS / ACCESSIBILITY ── */
+  :focus-visible { outline: 1px solid rgba(245,243,239,0.45); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .ticker-track { animation: none !important; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    nav, footer, .ticker-bar, #cookie-banner, #back-to-top, #progress-bar,
+    .hero-cta, .research-filter, .research-search, .btn-primary, .btn-ghost,
+    .btn-submit, #newsletter, .theme-toggle { display: none !important; }
+    body { background: #fff; color: #000; font-size: 12pt; }
+    #hero { min-height: auto; } .hero-right { display: none !important; }
+    .hero-title { font-size: 28pt; color: #000; }
+    section { padding: 2rem 0; border-bottom: 1pt solid #ccc; }
+    .service-card, .post-card, .testimonial-card { border: 1pt solid #ccc; break-inside: avoid; }
+    a { color: #000; text-decoration: underline; }
+  }
+
+  /* ── EXTRA RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .testimonials-header { grid-template-columns: 1fr; gap: 2rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .faq-header { grid-template-columns: 1fr; gap: 2rem; }
+    .skel-featured { grid-template-columns: 1fr; }
+    .skel-feat-right { display: none; }
+    .skel-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -1187,13 +1379,17 @@
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
       }
     });
   }
 </script>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- MOBILE OVERLAY MENU -->
 <div class="mobile-menu" id="mobileMenu">
@@ -1218,6 +1414,7 @@
   <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobile()">
     <span></span><span></span><span></span>
   </button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light mode" onclick="toggleTheme()">☀</button>
 </nav>
 
 <!-- HERO -->
@@ -1391,6 +1588,10 @@
     <p class="research-intro">
       Our research is written for investors who read carefully. No house views, no rating inflation — just independent analysis with our reasoning made explicit.
     </p>
+    <div class="research-search">
+      <i class="search-icon">⌕</i>
+      <input type="search" id="research-search-input" placeholder="Search research notes…" oninput="searchPosts(this.value)" aria-label="Search research">
+    </div>
   </div>
   <div id="featured-post"></div>
   <div class="posts-grid" id="posts-grid"></div>
@@ -1501,6 +1702,13 @@
     <p>Whether you're looking for a specific research report, ongoing coverage, or just want to understand what we do — we're happy to talk.</p>
     <div class="contact-detail">
       <div class="contact-row">
+        <span class="contact-lbl">Email</span>
+        <span class="contact-val">
+          <a href="mailto:research@hawthorneandfletcher.com">research@hawthorneandfletcher.com</a>
+          <button class="copy-btn" id="copyEmailBtn" onclick="copyEmail()" aria-label="Copy email">copy</button>
+        </span>
+      </div>
+      <div class="contact-row">
         <span class="contact-lbl">Website</span>
         <span class="contact-val"><a href="https://hawthorneandfletcher.com">hawthorneandfletcher.com</a></span>
       </div>
@@ -1547,6 +1755,107 @@
       <textarea id="message" placeholder="Tell us what you're looking for…"></textarea>
     </div>
     <button class="btn-submit" onclick="submitForm(this)">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <div>
+      <p class="section-label">Client Voices</p>
+      <h2 class="section-title">What our<br><em>clients say.</em></h2>
+    </div>
+    <p class="testimonials-intro">We work with a small number of clients who value depth over breadth. These are their words — shared with permission, identifying details withheld on request.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal reveal-delay-1">
+      <p class="testimonial-quote">Their analysis on the industrials sector was more thorough than anything we'd received from our prime broker. They identified the margin inflection nine months before consensus.</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-role">Portfolio Manager</div>
+        <div class="testimonial-name">Family Office, London</div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <p class="testimonial-quote">What sets Hawthorne & Fletcher apart is the intellectual honesty. They told us when our thesis was wrong, not just when it was right. That's rare and genuinely valuable.</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-role">Chief Investment Officer</div>
+        <div class="testimonial-name">Private Fund, Edinburgh</div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-3">
+      <p class="testimonial-quote">I've used research from bulge brackets, boutiques, and independents. H&F write like they have something at stake — because they do. The quality of reasoning is exceptional.</p>
+      <div class="testimonial-footer">
+        <div class="testimonial-role">Independent Investor</div>
+        <div class="testimonial-name">High Net Worth, Zurich</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-header reveal">
+    <div>
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Common<br><em>questions.</em></h2>
+    </div>
+    <p class="faq-intro">Everything you need to know before getting in touch. If something isn't covered here, use the contact form and we'll respond within one business day.</p>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        Do you charge per report or by retainer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">We offer both models. Individual reports are priced per engagement based on scope and complexity. Ongoing retainer arrangements — which give clients priority access and regular coverage — are agreed on a quarterly or annual basis. We're happy to discuss what works best for your situation.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        Do you cover companies outside the UK?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">Yes. While our primary focus is UK and European listed equities, we regularly cover North American and Asian names where the opportunity is compelling or a client has a specific need. Geography does not limit our mandate.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        What makes you different from a broker's research desk?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">Broker research is structurally conflicted — it exists to support corporate finance relationships, generate trading commissions, and maintain access to company management. Our research exists only to serve the reader. We have no investment banking revenues to protect, no ratings to inflate, and no relationships with the companies we cover.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        Can you keep coverage confidential?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">Absolutely. Many clients commission research they do not wish to share with the market. Bespoke research mandates are treated as strictly confidential by default — we will never publish or share work produced under a private engagement without explicit written consent.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        Are you regulated by the FCA?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">Hawthorne & Fletcher is not authorised or regulated by the Financial Conduct Authority. Our research is provided for informational and educational purposes only and does not constitute financial advice. Please refer to our full <a href="disclaimer.html" style="color:var(--white);border-bottom:1px solid var(--light-rule)">disclaimer</a> for important notices.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        How quickly can you turn around a report?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <p class="faq-answer-inner">For a standard equity research note, typically 5–10 business days from mandate confirmation. For time-sensitive situations — earnings reactions, M&A events, regulatory developments — we can produce focused briefing notes within 48 hours. Speak to us about your timeline and we'll tell you honestly what's achievable.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1688,7 +1997,13 @@
     }
 
     if (gridEl) {
-      gridEl.innerHTML = grid.map(p => `
+      const gridPosts = posts.filter(p => !p.featured);
+      if (gridPosts.length === 0 && !featured) {
+        featuredEl && (featuredEl.innerHTML = '');
+        gridEl.innerHTML = `<div class="no-results">No research notes found${searchQuery ? ` matching "<em>${searchQuery}</em>"` : ''}.</div>`;
+        return;
+      }
+      gridEl.innerHTML = gridPosts.map(p => `
         <div class="post-card" onclick="openArticle('${p.id}')" style="cursor:pointer">
           <div class="post-card-top">
             <span class="post-card-tag">${p.tag}</span>
@@ -1734,21 +2049,6 @@
     document.querySelectorAll('section, .ticker-bar').forEach(el => el.style.display = '');
     document.getElementById('research').scrollIntoView({ behavior: 'smooth' });
   }
-
-  // Filter buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = btn.dataset.filter;
-      const filtered = activeFilter === 'All'
-        ? allPosts
-        : allPosts.filter(p => p.tag === activeFilter);
-      renderPosts(filtered);
-    });
-  });
-
-  loadPosts();
 
   // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1875,6 +2175,94 @@
   }, { threshold: 0.5 });
 
   document.querySelectorAll('.metric-val[data-target]').forEach(el => counterObserver.observe(el));
+
+  // ── SCROLL PROGRESS BAR ──
+  const progressBar = document.getElementById('progress-bar');
+  const backToTop   = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    backToTop.classList.toggle('visible', scrollTop > 600);
+  }, { passive: true });
+
+  // ── LIGHT / DARK TOGGLE ──
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('themeToggle').textContent = isLight ? '☾' : '☀';
+    localStorage.setItem('hf_theme', isLight ? 'light' : 'dark');
+  }
+  if (localStorage.getItem('hf_theme') === 'light') {
+    document.body.classList.add('light');
+    const t = document.getElementById('themeToggle');
+    if (t) t.textContent = '☾';
+  }
+
+  // ── RESEARCH SEARCH ──
+  let searchQuery = '';
+  function searchPosts(q) {
+    searchQuery = q.toLowerCase().trim();
+    const filtered = searchQuery
+      ? allPosts.filter(p =>
+          (p.title || '').toLowerCase().includes(searchQuery) ||
+          (p.body  || '').toLowerCase().includes(searchQuery) ||
+          (p.tag   || '').toLowerCase().includes(searchQuery))
+      : activeFilter === 'All' ? allPosts : allPosts.filter(p => p.tag === activeFilter);
+    renderPosts(filtered);
+  }
+
+  // ── SKELETON LOADER ──
+  function showSkeleton() {
+    document.getElementById('featured-post').innerHTML = `
+      <div class="skel-featured">
+        <div class="skel-feat-left">
+          <span class="skeleton sk sk-tag"></span>
+          <span class="skeleton sk sk-h w80"></span>
+          <span class="skeleton sk sk-h w60"></span>
+          <span class="skeleton sk sk-p w100"></span>
+          <span class="skeleton sk sk-p w75"></span>
+          <span class="skeleton sk sk-p w50"></span>
+        </div>
+        <div class="skel-feat-right skeleton"></div>
+      </div>`;
+    document.getElementById('posts-grid').innerHTML = `
+      <div class="skel-grid">
+        ${[1,2,3].map(() => `
+          <div class="skel-card">
+            <span class="skeleton sk sk-tag"></span>
+            <span class="skeleton sk sk-h w90"></span>
+            <span class="skeleton sk sk-h w60"></span>
+            <span class="skeleton sk sk-p w100"></span>
+            <span class="skeleton sk sk-p w75"></span>
+          </div>`).join('')}
+      </div>`;
+  }
+  showSkeleton();
+
+  // ── FAQ ACCORDION ──
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // ── COPY EMAIL ──
+  function copyEmail() {
+    const email = 'research@hawthorneandfletcher.com';
+    navigator.clipboard.writeText(email).then(() => {
+      const btn = document.getElementById('copyEmailBtn');
+      btn.textContent = 'copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
 </script>
 
 <!-- COOKIE BANNER -->
