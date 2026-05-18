@@ -64,5 +64,16 @@
     "dateFormatted": "5 Mar 2025",
     "featured": false,
     "readTime": "6 min read"
-  }
+  },
+  {
+  "id": "test-primer-articulo",
+  "title": "First Post: Why We Started Hawthorne & Fletcher",
+  "excerpt": "Independent research exists because conflicts of interest are structural, not accidental. This is why we started this firm.",
+  "content": "Independent research exists because conflicts of interest are structural, not accidental.\n\n**The problem with sell-side research**\n\nMost equity research is produced by banks that also underwrite the companies being covered. The incentive to maintain relationships with issuers creates a systematic bias toward positive recommendations that is well-documented in academic literature.\n\n**Why independence matters**\n\nAt Hawthorne & Fletcher, our only client is the investor. We have no banking relationships, no corporate access arrangements, and no incentive to tell you anything other than what our analysis concludes.\n\n**What to expect**\n\nWe will publish research on a regular basis covering individual equities, sectors, and macro themes. Every piece will show our reasoning in full — so you can agree or disagree with our conclusions on the merits.",
+  "tag": "Opinion",
+  "dateFormatted": "16 May 2025",
+  "featured": true,
+  "readTime": "3 min read"
+}
+
 ]

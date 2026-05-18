@@ -1115,6 +1115,70 @@
     .cookie-actions { flex-direction: row; width: 100%; }
     .cookie-accept, .cookie-decline { flex: 1; text-align: center; }
   }
+
+  /* ── NEWSLETTER ── */
+  #newsletter {
+    border-bottom: 1px solid var(--light-rule);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 4rem;
+  }
+  .newsletter-inner {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .newsletter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  .newsletter-desc {
+    font-size: 1.05rem;
+    color: rgba(245,243,239,0.6);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .newsletter-form input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--light-rule);
+    color: var(--white);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-form input:focus {
+    border-color: rgba(255,255,255,0.3);
+  }
+  .newsletter-form .btn-submit {
+    width: auto;
+    margin-top: 0;
+    padding: 0.8rem 2rem;
+  }
+  .newsletter-disclaimer {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: rgba(136,136,136,0.5);
+    text-transform: uppercase;
+  }
+  @media (max-width: 640px) {
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form .btn-submit { width: 100%; }
+    #newsletter { padding: 5rem 1.6rem; }
+  }
 </style>
 </head>
 <body>
@@ -1483,6 +1547,19 @@
       <textarea id="message" placeholder="Tell us what you're looking for…"></textarea>
     </div>
     <button class="btn-submit" onclick="submitForm(this)">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner reveal">
+    <h2 class="newsletter-title">Insights, delivered.</h2>
+    <p class="newsletter-desc">Join our mailing list to receive exclusive research notes, sector updates, and macro commentary directly to your inbox.</p>
+    <form class="newsletter-form" action="TU_ENLACE_AQUI" method="post" target="_blank" onsubmit="if(this.action.includes('TU_ENLACE')) { event.preventDefault(); alert('Cuando tengas tu cuenta (ej. Mailchimp o Substack), pegaremos tu enlace aquí.'); this.querySelector('button').textContent = 'Subscribed ✓'; this.querySelector('button').style.background = 'transparent'; this.querySelector('button').style.color = 'rgba(245,243,239,0.5)'; this.querySelector('button').style.borderColor = 'rgba(255,255,255,0.1)'; }">
+      <input type="email" name="EMAIL" placeholder="Your email address" required>
+      <button type="submit" class="btn-submit">Subscribe</button>
+    </form>
+    <span class="newsletter-disclaimer">No spam. Unsubscribe at any time.</span>
   </div>
 </section>
 
